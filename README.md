@@ -8,32 +8,25 @@ Features (Planned & Future Ideas)
 
 Core Features:
 
-Add books you have read to your personal library.
-
-Store and view book details like title, author, and reading status.
+  Add books you have read to your personal library.
+  Store and view book details like title, author, and reading status.
 
 Planned Features:
 
-Reading Progress Tracker:
+  Reading Progress Tracker:
+    Set reading goals and track progress using a points system.
+    Each completed book advances you toward your goal.
 
-Set reading goals and track progress using a points system.
+  Vocabulary Section:
+    Add and store vocabulary from books you read in different languages.
+    Keep track of unfamiliar words and their translations.
 
-Each completed book advances you toward your goal.
+  Book API Integration:
+    Search and add books using APIs by entering title, author, or ISBN.
+    Fetch book details automatically.
 
-Vocabulary Section:
-
-Add and store vocabulary from books you read in different languages.
-
-Keep track of unfamiliar words and their translations.
-
-Book API Integration:
-
-Search and add books using APIs by entering title, author, or ISBN.
-
-Fetch book details automatically.
 
 Installation & Usage (To be updated)
-
 Since this project is in its early stages, installation and usage instructions will be added as development progresses.
 
 
