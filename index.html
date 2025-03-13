@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tracker App</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Book Tracker</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active" data-page="home">Meine Bücher</a></li>
+                    <li><a href="#" data-page="search">Buch suchen</a></li>
+                    <li><a href="#" data-page="goals">Leseziele</a></li>
+                    <li><a href="#" data-page="vocabulary">Vokabeln</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Home Page / Meine Bücher -->
+            <section id="home" class="page active">
+                <div class="section-header">
+                    <h2>Meine Bücher</h2>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-filter="all">Alle</button>
+                        <button class="filter-btn" data-filter="read">Gelesen</button>
+                        <button class="filter-btn" data-filter="reading">Lese ich</button>
+                        <button class="filter-btn" data-filter="to-read">Möchte ich lesen</button>
+                    </div>
+                </div>
+                
+                <div class="books-container" id="books-list">
+                    <!-- Bücher werden hier dynamisch eingefügt -->
+                    <div class="empty-state">
+                        <i class="fas fa-book-open"></i>
+                        <p>Du hast noch keine Bücher hinzugefügt.</p>
+                        <button class="btn primary" id="add-first-book">Erstes Buch hinzufügen</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Search Page / Buch suchen -->
+            <section id="search" class="page">
+                <h2>Buch suchen</h2>
+                <div class="search-container">
+                    <div class="search-input-container">
+                        <input type="text" id="search-input" placeholder="Buchtitel, Autor oder ISBN eingeben...">
+                        <button id="search-button" class="btn primary">Suchen</button>
+                    </div>
+                    <div class="search-options">
+                        <label>
+                            <input type="radio" name="search-type" value="title" checked>
+                            Titel
+                        </label>
+                        <label>
+                            <input type="radio" name="search-type" value="author">
+                            Autor
+                        </label>
+                        <label>
+                            <input type="radio" name="search-type" value="isbn">
+                            ISBN
+                        </label>
+                    </div>
+                </div>
+                
+                <div id="search-results" class="books-container">
+                    <!-- Suchergebnisse werden hier dynamisch eingefügt -->
+                </div>
+            </section>
+
+            <!-- Goals Page / Leseziele -->
+            <section id="goals" class="page">
+                <h2>Meine Leseziele</h2>
+                
+                <div class="goals-container">
+                    <div class="current-goal">
+                        <h3>Aktuelles Ziel</h3>
+                        <div class="goal-card" id="current-goal-card">
+                            <!-- Aktuelles Ziel wird hier dynamisch eingefügt -->
+                            <div class="empty-state">
+                                <i class="fas fa-bullseye"></i>
+                                <p>Du hast noch kein Leseziel festgelegt.</p>
+                                <button class="btn primary" id="create-goal-btn">Ziel erstellen</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="goal-history">
+                        <h3>Vergangene Ziele</h3>
+                        <div id="past-goals">
+                            <!-- Vergangene Ziele werden hier dynamisch eingefügt -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vocabulary Page / Vokabeln -->
+            <section id="vocabulary" class="page">
+                <h2>Meine Vokabeln</h2>
+                
+                <div class="vocabulary-container">
+                    <div class="vocabulary-books">
+                        <h3>Bücher mit Vokabeln</h3>
+                        <ul id="vocabulary-books-list">
+                            <!-- Bücher mit Vokabeln werden hier dynamisch eingefügt -->
+                        </ul>
+                    </div>
+                    
+                    <div class="vocabulary-words">
+                        <div class="vocabulary-header">
+                            <h3 id="vocabulary-book-title">Wähle ein Buch aus</h3>
+                            <button id="add-vocabulary-btn" class="btn secondary" disabled>Vokabel hinzufügen</button>
+                        </div>
+                        
+                        <div id="vocabulary-list">
+                            <!-- Vokabeln werden hier dynamisch eingefügt -->
+                            <div class="empty-state">
+                                <i class="fas fa-language"></i>
+                                <p>Wähle ein Buch aus oder füge neue Vokabeln hinzu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modals -->
+        <div class="modal" id="add-book-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Buch hinzufügen</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="book-details">
+                        <img src="images/book-placeholder.svg" alt="Buchcover" id="book-cover-preview">
+                        <div class="book-info">
+                            <h4 id="book-title-preview">Buchtitel</h4>
+                            <p id="book-author-preview">Autor</p>
+                            <p id="book-isbn-preview">ISBN: -</p>
+                        </div>
+                    </div>
+                    <div class="book-status">
+                        <h4>Status</h4>
+                        <div class="status-options">
+                            <label>
+                                <input type="radio" name="book-status" value="read" checked>
+                                Gelesen
+                            </label>
+                            <label>
+                                <input type="radio" name="book-status" value="reading">
+                                Lese ich gerade
+                            </label>
+                            <label>
+                                <input type="radio" name="book-status" value="to-read">
+                                Möchte ich lesen
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn secondary close-modal">Abbrechen</button>
+                    <button class="btn primary" id="save-book-btn">Speichern</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="add-goal-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Leseziel erstellen</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="goal-year">Jahr</label>
+                        <input type="number" id="goal-year" min="2000" max="2100">
+                    </div>
+                    <div class="form-group">
+                        <label for="goal-books">Anzahl der Bücher</label>
+                        <input type="number" id="goal-books" min="1" max="1000">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn secondary close-modal">Abbrechen</button>
+                    <button class="btn primary" id="save-goal-btn">Speichern</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="add-vocabulary-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Vokabel hinzufügen</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="vocabulary-word">Wort/Phrase</label>
+                        <input type="text" id="vocabulary-word">
+                    </div>
+                    <div class="form-group">
+                        <label for="vocabulary-translation">Übersetzung (optional)</label>
+                        <input type="text" id="vocabulary-translation">
+                    </div>
+                    <div class="form-group">
+                        <label for="vocabulary-context">Kontext/Notiz (optional)</label>
+                        <textarea id="vocabulary-context"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn secondary close-modal">Abbrechen</button>
+                    <button class="btn primary" id="save-vocabulary-btn">Speichern</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
