@@ -235,6 +235,7 @@ function renderBooks() {
                     break;
             }
             
+            // In renderBooks function, update the book card template
             booksHTML += `
                 <div class="book-card" data-id="${book.id}">
                     <div class="book-cover">
@@ -244,6 +245,9 @@ function renderBooks() {
                         <h3 class="book-title">${book.title}</h3>
                         <p class="book-author">${book.author}</p>
                         <span class="book-status ${statusClass}">${statusText}</span>
+                        <button class="btn secondary delete-book-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </div>
                 </div>
             `;
@@ -252,12 +256,24 @@ function renderBooks() {
         elements.booksList.innerHTML = booksHTML;
         
         // Add event listeners to book cards
+        // In renderBooks function, update the event listeners section
         document.querySelectorAll('.book-card').forEach(card => {
-            card.addEventListener('click', () => {
+            // Separate event listener for delete button
+            const deleteBtn = card.querySelector('.delete-book-btn');
+            deleteBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent book card click
                 const bookId = card.getAttribute('data-id');
-                const book = state.books.find(b => b.id === bookId);
-                if (book) {
-                    showBookDetails(book);
+                deleteBook(bookId);
+            });
+        
+            // Book card click event (for showing details)
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('.delete-book-btn')) {
+                    const bookId = card.getAttribute('data-id');
+                    const book = state.books.find(b => b.id === bookId);
+                    if (book) {
+                        showBookDetails(book);
+                    }
                 }
             });
         });
@@ -800,3 +816,26 @@ async function translateWord(word, sourceLang = 'en', targetLang = 'de') {
 
 // Initialize the app when the DOM is loaded
 document.addEventListener('DOMContentLoaded', init);
+
+// Delete book
+function deleteBook(bookId) {
+    if (confirm('Möchtest du dieses Buch wirklich löschen?')) {
+        // Remove book from state
+        state.books = state.books.filter(book => book.id !== bookId);
+        
+        // Remove book's vocabulary if it exists
+        if (state.vocabulary[bookId]) {
+            delete state.vocabulary[bookId];
+        }
+        
+        // Save changes and update UI
+        saveData();
+        renderBooks();
+        updateGoals();
+        
+        // If we're on the vocabulary page, update it
+        if (state.currentPage === 'vocabulary') {
+            renderVocabularyBooks();
+        }
+    }
+}
