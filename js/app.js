@@ -1,5 +1,4 @@
 // Book Tracker App - Main JavaScript
-
 // Global state
 const state = {
     books: [],
@@ -195,6 +194,7 @@ function changeFilter(filter) {
 }
 
 // Render books
+// In renderBooks function, fix the structure
 function renderBooks() {
     const filteredBooks = state.books.filter(book => {
         if (state.currentFilter === 'all') return true;
@@ -206,12 +206,14 @@ function renderBooks() {
             <div class="empty-state">
                 <i class="fas fa-book-open"></i>
                 <p>${state.books.length === 0 ? 'Du hast noch keine Bücher hinzugefügt.' : 'Keine Bücher mit diesem Filter gefunden.'}</p>
-                <button class="btn primary" id="add-book-btn">Buch hinzufügen</button>
+                <a href="#" class="btn primary" data-page="search">Buch suchen</a>
             </div>
         `;
         
-        document.getElementById('add-book-btn').addEventListener('click', () => {
-            openModal(elements.addBookModal);
+        // Update event listener to navigate to search page
+        document.querySelector('.empty-state .btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            changePage('search');
         });
     } else {
         let booksHTML = '';
