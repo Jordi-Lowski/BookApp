@@ -5,8 +5,8 @@ This project aims to provide a structured way to document your reading history a
 
 Features (Planned & Future Ideas)
 
-Core Features:
-  -->Add books you have read to your personal library.
+Core Features:<br>
+  -->Add books you have read to your personal library.<br>
   -->Store and view book details like title, author, and reading status.<br><br>
 
 Planned Features:<br><br>
