@@ -10,14 +10,14 @@ Core Features:
   -Store and view book details like title, author, and reading status.<br>
 
 Planned Features:<br>
-  -Reading Progress Tracker:
-    Set reading goals and track progress using a points system.
+  -Reading Progress Tracker:<br>
+    Set reading goals and track progress using a points system.<br>
     Each completed book advances you toward your goal.<br>
-  -Vocabulary Section:
-    Add and store vocabulary from books you read in different languages.
+  -Vocabulary Section:<br>
+    Add and store vocabulary from books you read in different languages.<br>
     Keep track of unfamiliar words and their translations.<br>
-  -Book API Integration:
-    Search and add books using APIs by entering title, author, or ISBN.
+  -Book API Integration:<br>
+    Search and add books using APIs by entering title, author, or ISBN.<br>
     Fetch book details automatically.<br>
 
 
