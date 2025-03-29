@@ -6,19 +6,19 @@ This project aims to provide a structured way to document your reading history a
 Features (Planned & Future Ideas)
 
 Core Features:
-  -Add books you have read to your personal library.
-  -Store and view book details like title, author, and reading status.<br>
+  -->Add books you have read to your personal library.
+  -->Store and view book details like title, author, and reading status.<br><br>
 
-Planned Features:<br>
-  -Reading Progress Tracker:<br>
+Planned Features:<br><br>
+  -->Reading Progress Tracker:<br>
     Set reading goals and track progress using a points system.<br>
-    Each completed book advances you toward your goal.<br>
-  -Vocabulary Section:<br>
+    Each completed book advances you toward your goal.<br><br>
+  -->Vocabulary Section:<br>
     Add and store vocabulary from books you read in different languages.<br>
-    Keep track of unfamiliar words and their translations.<br>
-  -Book API Integration:<br>
+    Keep track of unfamiliar words and their translations.<br><br>
+  -->Book API Integration:<br>
     Search and add books using APIs by entering title, author, or ISBN.<br>
-    Fetch book details automatically.<br>
+    Fetch book details automatically.<br><br>
 
 
 Installation & Usage (To be updated)
