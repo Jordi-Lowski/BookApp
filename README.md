@@ -1,6 +1,6 @@
-# BookApp
+# Book-Tracking-App
 
-BookApp is a personal book tracking application designed to help you keep an overview of all the books you have read.
+Book-Tracking-App is a personal book tracking application designed to help you keep an overview of all the books you have read.
 This project aims to provide a structured way to document your reading history and, in the future, introduce additional features to enhance the experience.<br>
 
 Features (Planned & Future Ideas)
